@@ -45,8 +45,10 @@ class WebCrawler:
 
 web_crawler = WebCrawler(web_url1)
 linkss = web_crawler.get_all_links()
-x = 0
-for link in linkss[:2]:
-    WebCrawler(link).translate_all_page("output{}.html".format(x))
-    x += 1
+for i, n in enumerate(list(set(linkss))):
+    print(i, n)
+#x = 0
+#for link in linkss[:2]:
+#    WebCrawler(link).translate_all_page("output{}.html".format(x))
+#    x += 1
 

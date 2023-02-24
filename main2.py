@@ -12,16 +12,17 @@ html_text = requests.get(web_url1, headers=headers).text
 soup = BeautifulSoup(html_text, "lxml")
 
 for img in soup.find_all("img"):
-        img_url = img.get("src")
-        print(img_url)
-        if img_url:
-            file_name = img_url.split("/")[-1]
-            try:
-                response = requests.get(img_url)
-            except:
-                pass
-            file_content = response.content
-            if not os.path.exists('Images'):
-                os.mkdir('Images')
-            with open(os.path.join('Images', file_name), "wb") as f:
-                f.write(file_content)
+    img_url = img.get("src")
+    print(img_url)
+    if img_url:
+        file_name = img_url.split("/")[-1]
+        try:
+            response = requests.get(img_url)
+        except:
+            print('invalid url')
+            continue
+        file_content = response.content
+        if not os.path.exists('Images'):
+            os.mkdir('Images')
+        with open(os.path.join('Images', file_name), "wb") as f:
+            f.write(file_content)
