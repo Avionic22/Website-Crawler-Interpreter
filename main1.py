@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import requests
 
-web_url1 = 'https://www.classcentral.com'
+web_url1 = 'https://www.classcentral.com/login'
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15'}
 
 
@@ -120,20 +120,20 @@ downloaded_links = [
     'https://www.classcentral.com/signup',
     'https://www.classcentral.com/report/best-free-online-courses-2022/'
         ]
-web_crawler = WebCrawler(web_url1)
-linkss = web_crawler.get_all_links()
+web_crawler = WebCrawler(web_url1).translate_all_page("output78.html")
+#linkss = web_crawler.get_all_links()
 #for i, n in enumerate(list(set(linkss))):
 #    print(i, n)
-x = 78
-linkss_new = list(set(linkss))
+#x = 78
+#linkss_new = list(set(linkss))
 
-print(len(set(downloaded_links)))
-for num, link in enumerate(linkss_new):
+#print(len(set(downloaded_links)))
+#for num, link in enumerate(linkss_new):
     #if link.strip() == 'https://www.classcentral.com/institution/amazon' or link.strip() == 'https://www.classcentral.com/institution/smithsonian' or link.strip() == 'https://www.classcentral.com/report/author/manoel/' or link.strip() == 'https://www.classcentral.com/university/mit' or link.strip() == 'https://www.classcentral.com/provider/swayam' or link.strip() == 'https://www.classcentral.com/report/' or link.strip() == 'https://www.classcentral.com/provider/futurelearn' or link.strip() == 'https://www.classcentral.com/report/most-popular-online-courses/' or link.strip() == 'https://www.classcentral.com/provider/udemy' or link.strip() == 'https://www.classcentral.com/rankings' or link.strip() == 'https://www.classcentral.com/university/stanford' or link.strip() == 'https://www.classcentral.com/report/online-learning-deals/' or link.strip() == 'https://www.classcentral.com/help/moocs' or link.strip() == 'https://www.classcentral.com/subject/personal-development' or link.strip() == 'https://www.classcentral.com/course/mindfulness-wellbeing-performance-3714':
     #    linkss_new.remove(link)
-    if link.strip() not in downloaded_links:
-        print(num, link)
+    #if link.strip() not in downloaded_links:
+    #    print(num, link)
 
-        WebCrawler(link.strip()).translate_all_page("output{}.html".format(x))
-        x += 1
+        #WebCrawler(link.strip()).translate_all_page("output{}.html".format(x))
+        #x += 1
 
